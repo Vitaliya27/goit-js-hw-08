@@ -1,7 +1,13 @@
 ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
+    margin: 0, auto;
+    display: flex;
+    width: 1440px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+li {
+    text-decoration: none;
 }
 
 a {
