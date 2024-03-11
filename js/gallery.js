@@ -66,7 +66,7 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map(({preview, original, description}) => 
+const galleryItems = images.map(({preview, original, description}) => {
     const galleryItem = document.createElement("li")
     galleryItem.classList.add("gallery-item");
 
@@ -84,4 +84,18 @@ const galleryItems = images.map(({preview, original, description}) =>
     galleryItem.appendChild(galleryLink);
     
     return galleryItem;
-)
+});
+
+galleryItems.forEach(galleryItem => (
+    gallery.appendChild(galleryItem)
+));
+
+gallery.addEventListener('click', 
+    function(event) {
+        event.preventDefault();
+        if (event.target.tagName === 'IMG') {
+            const largeImageSource = event.target.dataset.source;
+            const lightbox = basicLightbox.create(`<img src="${largeImageSource}">`);
+            lightbox.show();
+        }
+});
